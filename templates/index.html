@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas Seguras</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Generador de Contraseñas Seguras</h1>
+    <form method="POST">
+        <label for="length">Longitud de la contraseña:</label>
+        <input type="number" name="length" id="length" value="8" min="4" max="32" required>
+        <br>
+        <div class="checkbox-container">
+            <input type="checkbox" name="uppercase" id="uppercase" {% if use_uppercase %}checked{% endif %}>
+            <label for="uppercase">Incluir mayúsculas</label>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" name="numbers" id="numbers" {% if use_numbers %}checked{% endif %}>
+            <label for="numbers">Incluir números</label>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" name="special" id="special" {% if use_special %}checked{% endif %}>
+            <label for="special">Incluir caracteres especiales</label>
+        </div>
+        <button type="submit">Generar Contraseña</button>
+    </form>
+    {% if password %}
+    <h2>Contraseña Generada:</h2>
+    <p>{{ password }}</p>
+    {% endif %}
+</body>
+</html>
